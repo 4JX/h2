@@ -38,7 +38,8 @@ const ACK: u8 = 0x1;
 const ALL: u8 = ACK;
 
 /// The default value of SETTINGS_HEADER_TABLE_SIZE
-pub const DEFAULT_SETTINGS_HEADER_TABLE_SIZE: usize = 4_096;
+// This is a stupid fix for something thats clearly broken elsewhere
+pub const DEFAULT_SETTINGS_HEADER_TABLE_SIZE: usize = 65_536;
 
 /// The default value of SETTINGS_INITIAL_WINDOW_SIZE
 pub const DEFAULT_INITIAL_WINDOW_SIZE: u32 = 65_535;
@@ -120,7 +121,7 @@ impl Settings {
     pub fn header_table_size(&self) -> Option<u32> {
         self.header_table_size
     }
-    
+
     pub fn set_header_table_size(&mut self, size: Option<u32>) {
         self.header_table_size = size;
     }
